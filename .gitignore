@@ -1,32 +1,44 @@
-# Prerequisites
-*.d
+namespace ConsoleApp12
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            string testValue = "Person03";
 
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
+            bool isPasswordValid = CheckPassword(testValue);
 
-# Precompiled Headers
-*.gch
-*.pch
+            if (isPasswordValid)
+            {
+                Console.WriteLine("Uygundur.");
+            }
+            else
+            {
+                Console.WriteLine("uygun deyildir");
+            }
+        }
+        static bool CheckPassword(string password)
+        {
+            // 1. En az 1 reqem
+            if (!password.Any(char.IsDigit))
+            {
+                return false;
+            }
 
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
+            // 2. En az 1 boyük herf 
+            if (!password.Any(char.IsUpper))
+            {
+                return false;
+            }
 
-# Fortran module files
-*.mod
-*.smod
+            // 3. En az 1 kicik herf
+            if (!password.Any(char.IsLower))
+            {
+                return false;
+            }
 
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+            // uygundur
+            return true;
+        }
+    }
+}
